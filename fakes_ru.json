@@ -5,7 +5,7 @@
             "Loading ad_final.xml...done (0.00 seconds)|0",
             "Loading computers.xml...done (0.00 seconds)|0",
             "Loading failures.xml...done (0.00 seconds)|0",
-            "Обучение классификатора намерений...|0",
+            "Обучение классификатора намерений...|5",
             "Обучение завершено!|0",
             "Ошибка остановки текущего цикла событий: no running event loop|0",
             "Создание нового цикла событий|1",
