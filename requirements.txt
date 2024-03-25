@@ -1,0 +1,3 @@
+python-telegram-bot==20.3
+nltk>=3.8.1
+gTTS>=2.5.1

@@ -1,0 +1,173 @@
+{
+    "logs": {
+        "after_dialogues": [
+            "Loading intents from data/intents.json|0.1",
+            "Training AIML kernel on data/aiml/failure.aiml|0.1",
+            "Loading data/aiml/failure.aiml...done (0.00 seconds)|0",
+            "Training intent classifier...|5",
+            "Training done|0"
+        ],
+        "dialogues_loading": "Loading dialogues from {file_name}",
+        "dialogues_filtering": "Filtering dialogues",
+        "dialogues_structuring": "Structurizing dialogues",
+        "dialogues_sort": "Sorting dialogues",
+        "dialogues_shuffle": "Sorting dialogues",
+        "dialogues_done": "Dialogues for {words} words loaded",
+        "request_simplified": "Simplified request: {request}",
+        "intent": "Predicted intent for \"{request}\": {intent}",
+        "intent_not_found": "Intent \"{intent}\" not found",
+        "intent_topic": "Request from user {user_id}: {request}. User's topic: {topic}, intent: {intent}",
+        "topic_next": "New user topic: {topic}",
+        "voice_generating": "Generating voice message",
+        "voice_sending": "Sending voice message",
+        "voice_deleting": "Deleting voice message"
+    },
+    "failures": [
+        "Неясно 🥴 Пожалуйста, попробуйте переформулировать сообщение",
+        "Спросите что-то другое 😵‍💫",
+        "Я вас не понимаю 🤯",
+        "Вы серьезно думаете, что я понимаю то, что вы написали?"
+    ],
+    "intents": {
+        "hello": {
+            "request": ".*([пП]риве|[sS]tart|дравству).*",
+            "responses": [
+                "Привет 👋",
+                "Здравствуй 🖖",
+                "У тебя сделана лаба? 🥸... Я имею в виду Привет!"
+            ],
+            "topic_current": "any",
+            "topic_next": "undefined"
+        },
+        "goodbye": {
+            "request": ".*([пП]ок|bye|[дД]о свидания|see you|end|увидимся).*",
+            "responses": [
+                "Пока на этом 😊",
+                "Было приятно поговорить с тобой 🙌"
+            ],
+            "topic_current": "any",
+            "topic_next": "undefined"
+        },
+        "thanks": {
+            "request": ".*([Сс]пасибо|thx|[Пп]асеба|благодарю|всё вкусно).*",
+            "responses": [
+                "Хорошо что тебе понравилось 😊",
+                "Обращайся если что 🙌"
+            ],
+            "topic_current": "any",
+            "topic_next": "undefined"
+        },
+        "name": {
+            "request": ".*([Кк]то ты|[Кк]ак тебя зовут|[Чч]то ты умеешь|представься).*",
+            "responses": [
+                "Меня зовут TOFA-Mini 🤖 и я люблю еду!",
+                "Я TOFA-Mini, твой чат-бот по еде 🤗",
+                "Меня зовут TOFA-Mini, обсуждение еды - моя стихия 😎"
+            ],
+            "topic_current": "any",
+            "topic_next": "undefined"
+        },
+        "food": {
+            "request": ".*([хХ]очу есть|[Хх]очу кушать|кушать хочется|чтобы покушать).*",
+            "responses": "Ты веган? 🌱",
+            "topic_current": "any",
+            "topic_next": "ask_vegan"
+        },
+        "yes": {
+            "request": "[дД]а",
+            "responses": "Капустка или морковка? 🥕",
+            "topic_current": "ask_vegan",
+            "topic_next": "сabbage_carrot"
+        },
+        "cabbage": {
+            "request": ".*капус.*",
+            "responses": "Вот твоя капуста: 🥬\nХочешь леденцы со вкусом мяты 🍬 после 🥬?",
+            "topic_current": "сabbage_carrot",
+            "topic_next": "mints_select"
+        },
+        "carrot": {
+            "request": ".*морков.*",
+            "responses": "Вот твоя морковь: 🥕\nХочешь леденцы со вкусом мяты 🍬 после 🥕?",
+            "topic_current": "сabbage_carrot",
+            "topic_next": "mints_select"
+        },
+        "yes ": {
+            "request": "[дД]аа",
+            "responses": "Какие леденцы предпочитаешь?\n\nALTOIDS - 2$ / банка\nTic Tac - 1.5$ / упаковка\nHalls - 1.25$ / упаковка\nIce Breakers - 1.30$ / упаковка\nRicola - 1.20$ / упаковка",
+            "topic_next": "mints_select",
+            "image": "data/images/altoids.png"
+        },
+        "mints": {
+            "request": ".*([Лл]еденцы|[Кк]онфеты).*",
+            "responses": "Какие леденцы предпочитаешь?\n\nALTOIDS - 2$ / банка\nTic Tac - 1.5$ / упаковка\nHalls - 1.25$ / упаковка\nIce Breakers - 1.30$ / упаковка\nRicola - 1.20$ / упаковка",
+            "topic_next": "mints_select",
+            "image": "data/images/altoids.png"
+        },
+        "sweets": {
+            "request": ".*([Сс]ладости|шоколадки|[Кк]онфеты).*",
+            "responses": "Какую сладость предпочитаешь?\n\nHERSHEY'S cookies'n'creme - 1$ / 1 шт.\nRaffaello - 1$ / 1 шт.\nM&M's - 0.75$ / упаковка\nSnickers - 0.80$ / шт.\nKitKat - 0.90$ / шт.",
+            "topic_next": "sweets_select",
+            "image": "data/images/hersheys.png"
+        },
+        "hersheys": {
+            "request": ".*([шШ]окола|[hH]ersh|[хХ]ерш).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить HERSHEY'S cookies'n'creme: <ну типа тык сюда>",
+            "topic_current": "sweets_select",
+            "image": "data/images/hersheys.png"
+        },
+        "raffaello": {
+            "request": ".*([рР]афа[еэ]л*о|[Rr]affaello|шарики|с кокосом|с орехами).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить Raffaello: <ну типа тык сюда>",
+            "topic_current": "sweets_select",
+            "image": "data/images/rafaello.png"
+        },
+        "mms": {
+            "request": ".*([Mm]n[Mm][sS]|[мМ]эмсы|ммсы|[эЭ]м[eэ]?нд[еэ]?мс).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты M&M's: <ну типа тык сюда>",
+            "topic_current": "sweets_select",
+            "image": "data/images/mnms.png"
+        },
+        "snickers": {
+            "request": ".*([Сс]никерс|[Ss]nickers).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты Snickers: <ну типа тык сюда>",
+            "topic_current": "sweets_select",
+            "image": "data/images/snickers.png"
+        },
+        "kitkat": {
+            "request": ".*([Кк]ит[ -]?[Кк][аэ]т|[Kk]it[ -]?[Kk]at).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты KitKat: <ну типа тык сюда>",
+            "topic_current": "sweets_select",
+            "image": "data/images/kitkat.png"
+        },
+        "altoids": {
+            "request": ".*([Аа]льт[ -]?[оа][ий]дс|[Aa]ltoids).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить ALTOIDS: <ну типа тык сюда>",
+            "topic_current": "mints_select",
+            "image": "data/images/altoids.png"
+        },
+        "tictac": {
+            "request": ".*([Тт]ик[ -]?[Тт]ак|[Tt]ic[ -]?[Tt]ac).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить Tic Tac: <ну типа тык сюда>",
+            "topic_current": "mints_select",
+            "image": "data/images/tictac.png"
+        },
+        "halls": {
+            "request": ".*([Хх]олл?с|[Hh]alls).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты Halls: <ну типа тык сюда>",
+            "topic_current": "mints_select",
+            "image": "data/images/halls.png"
+        },
+        "icebreakers": {
+            "request": ".*([Аа]йс[ -]?[Бб]р[еэ]й?керс|[Ii]ce[ -]?[Bb]reakers).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты Ice Breakers: <ну типа тык сюда>",
+            "topic_current": "mints_select",
+            "image": "data/images/ice_brackers.png"
+        },
+        "ricola": {
+            "request": ".*([Рр]икол|[Rr]icola).*",
+            "responses": "Конечно! Перейди по этой ссылке, чтобы купить конфеты Ricola: <ну типа тык сюда>",
+            "topic_current": "mints_select",
+            "image": "data/images/ricola.png"
+        }
+    }
+}
